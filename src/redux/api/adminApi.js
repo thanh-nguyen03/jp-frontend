@@ -1,0 +1,15 @@
+import baseApi from "src/redux/api/baseApi";
+
+const adminApi = baseApi.injectEndpoints({
+  endpoints: (build) => ({
+    getHello: build.query({
+      query: () => ({
+        url: "/admin/hello",
+        method: "GET",
+      }),
+    }),
+  }),
+});
+
+export const { useGetHelloQuery } = adminApi;
+export default adminApi;
