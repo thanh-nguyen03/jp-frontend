@@ -1,0 +1,50 @@
+stages:
+  - build
+  - containerize
+  - deploy
+
+build:
+  stage: build
+  script:
+    - yarn install
+    - yarn run build
+  artifacts:
+    paths:
+      - dist/
+  only:
+      - main
+
+containerize:
+  stage: containerize
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  before_script:
+    - eval $(ssh-agent -s)
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - apt-get update && apt-get install -y openssh-client
+
+    - ssh -o StrictHostKeyChecking=no $USER@$SERVER_IP 'mkdir -p /deploy'
+    - scp -o StrictHostKeyChecking=no docker-compose.yml $USER@$SERVER_IP:/deploy
+    - >
+      ssh -o StrictHostKeyChecking=no $USER@$SERVER_IP <<COMMAND
+        cd /deploy
+        echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+        docker compose pull server
+        docker compose up -d
+      COMMAND
+  only:
+    - main
