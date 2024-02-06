@@ -4,7 +4,7 @@ services:
   client:
     image: registry.gitlab.com/donghochanh/it-job-portal/jp-frontend:main
     ports:
-      - "5173:80"
+      - "80:80"
     env_file:
       - .env
     restart: unless-stopped
