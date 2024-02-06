@@ -5,6 +5,10 @@ stages:
 
 build:
   stage: build
+  image: node:18-alpine
+  cache:
+    paths:
+      - node_modules/
   script:
     - yarn install
     - yarn run build
