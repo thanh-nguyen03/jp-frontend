@@ -41,11 +41,11 @@ deploy:
   script:
     - apt-get update && apt-get install -y openssh-client
 
-    - ssh -o StrictHostKeyChecking=no $USER@$SERVER_IP 'mkdir -p /deploy'
-    - scp -o StrictHostKeyChecking=no docker-compose.yml $USER@$SERVER_IP:/deploy
+    - ssh -o StrictHostKeyChecking=no $USER@$SERVER_IP 'mkdir -p /deploy/client'
+    - scp -o StrictHostKeyChecking=no docker-compose.yml $USER@$SERVER_IP:/deploy/client
     - >
       ssh -o StrictHostKeyChecking=no $USER@$SERVER_IP <<COMMAND
-        cd /deploy
+        cd /deploy/client
         echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
         docker compose pull server
         docker compose up -d
