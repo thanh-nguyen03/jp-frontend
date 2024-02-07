@@ -5,6 +5,8 @@ services:
     image: registry.gitlab.com/donghochanh/it-job-portal/jp-frontend:main
     ports:
       - "80:80"
+    environment:
+      VITE_APP_API_URL: ${VITE_APP_API_URL}
     env_file:
       - .env
     restart: unless-stopped
