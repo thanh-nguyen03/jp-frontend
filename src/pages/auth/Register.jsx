@@ -65,16 +65,22 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (error) {
+    if (error?.data?.data) {
       toast({
         title: error.data.message,
         description: (
           <>
-            {error.data.data.map((err) => (
+            {[...error.data.data].map((err) => (
               <Text key={err.errorMessage}>{err.errorMessage}</Text>
             ))}
           </>
         ),
+        status: "error",
+      });
+    } else if (error) {
+      toast({
+        title: "Error",
+        description: error.data.message,
         status: "error",
       });
     }
