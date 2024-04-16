@@ -12,6 +12,7 @@ import {
   Text,
   useToast,
   FormErrorMessage,
+  HStack,
 } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
@@ -22,11 +23,9 @@ import { useRegisterMutation } from "src/redux/api/authApi";
 import { object, string } from "yup";
 
 const validationSchema = object({
-  username: string()
-    .required("Username is required")
-    .min(3, "Username must be at least 3 characters")
-    .max(20, "Username must be at most 20 characters"),
-  fullName: string().required("Full name is required").max(255, "Full name must be at most 255 characters"),
+  email: string().required("Email is required").email("Email is invalid"),
+  firstName: string().trim().required("First name is required"),
+  lastName: string().trim().required("Last name is required"),
   password: string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters")
@@ -47,9 +46,9 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    const { username, fullName, password } = values;
+    const { email, firstName, lastName, password } = values;
     try {
-      const response = await register({ username, fullName, password }).unwrap();
+      const response = await register({ email, firstName, lastName, password }).unwrap();
 
       if (response.success) {
         navigate(ROUTES.login);
@@ -105,21 +104,31 @@ const Register = () => {
         >
           <VStack spacing={4} w="100%">
             <FormControl id="username">
-              <FormLabel>Username</FormLabel>
-              <Input rounded="md" type="text" placeholder="Username" {...formRegister("username")} />
-              <FormErrorMessage>{errors.fullName && errors.fullName.message}</FormErrorMessage>
+              <FormLabel>Email</FormLabel>
+              <Input rounded="md" type="text" placeholder="Email" {...formRegister("email")} />
+              <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
             </FormControl>
-            <FormControl id="fullName">
-              <FormLabel>Full name</FormLabel>
-              <Input rounded="md" type="text" placeholder="Full name" {...formRegister("fullName")} />
-              <FormErrorMessage>{errors.fullName && errors.fullName.message}</FormErrorMessage>
-            </FormControl>
+
+            <HStack w="100%">
+              <FormControl id="firstName">
+                <FormLabel>First Name</FormLabel>
+                <Input rounded="md" type="text" placeholder="First name" {...formRegister("firstName")} />
+                <FormErrorMessage>{errors.firstName && errors.firstName.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl id="lastName">
+                <FormLabel>Last Name</FormLabel>
+                <Input rounded="md" type="text" placeholder="Last name" {...formRegister("lastName")} />
+                <FormErrorMessage>{errors.lastName && errors.lastName.message}</FormErrorMessage>
+              </FormControl>
+            </HStack>
+
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
               <Input rounded="md" type="password" placeholder="Password" {...formRegister("password")} />
               <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
             </FormControl>
           </VStack>
+
           <VStack w="100%">
             <Button
               isLoading={isLoading}

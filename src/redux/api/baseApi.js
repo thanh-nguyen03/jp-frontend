@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { logout, setCredential, storeTokens } from "src/redux/state/reducers/authReducer";
 
 const baseApiSlice = fetchBaseQuery({
-  baseUrl: "http://it-job-portal.thanhnguyen03.site:8080",
+  baseUrl: "http://localhost:8080",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("accessToken");
     if (token) {

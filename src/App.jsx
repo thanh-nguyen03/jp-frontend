@@ -11,7 +11,7 @@ import { setCredential } from "src/redux/state/reducers/authReducer";
 
 const App = () => {
   const [isDecoded, setIsDecoded] = useState(false);
-  const { isAuthenticated, hasRole } = useAuth();
+  const { isAuthenticated, hasAnyRole } = useAuth();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const toast = useToast();
@@ -29,16 +29,7 @@ const App = () => {
 
   useEffect(() => {
     if (!isDecoded) return;
-    if (pathname.includes(ROUTES.admin) && !hasRole(ROLES.ADMIN)) {
-      navigate(ROUTES.dashboard);
-      toast({
-        title: "Forbidden",
-        description: "You don't have permission to access this page.",
-        status: "error",
-      });
-    }
-
-    if (pathname.includes(ROUTES.recruiter) && !hasRole(ROLES.RECRUITER)) {
+    if (pathname.includes(ROUTES.admin) && !hasAnyRole(ROLES.ADMIN, ROLES.COMPANY_ADMIN)) {
       navigate(ROUTES.dashboard);
       toast({
         title: "Forbidden",
@@ -55,7 +46,7 @@ const App = () => {
         status: "warning",
       });
     }
-  }, [hasRole, isAuthenticated, isDecoded, navigate, pathname, toast]);
+  }, [hasAnyRole, isAuthenticated, isDecoded, navigate, pathname, toast]);
 
   return <Box>{useRoutes(router)}</Box>;
 };
