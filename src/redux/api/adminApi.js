@@ -4,7 +4,7 @@ const adminApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getHello: build.query({
       query: () => ({
-        url: "/admin/hello",
+        url: "/admin-sample",
         method: "GET",
       }),
     }),

@@ -11,9 +11,6 @@ const ROUTES = {
   dashboard: "/",
   userProfile: "/profile",
 
-  // Recruiter routes
-  recruiter: "/recruiter",
-
   // Admin routes
   admin: "/admin",
 };

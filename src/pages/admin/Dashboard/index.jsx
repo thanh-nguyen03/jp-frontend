@@ -8,7 +8,7 @@ const AdminDashboard = () => {
   return (
     <Page>
       <Heading>Admin Dashboard</Heading>
-      {!isLoading && <Text>{data.data}</Text>}
+      {!isLoading && <Text>{data.message}</Text>}
     </Page>
   );
 };

@@ -1,5 +1,6 @@
 import { AiOutlineHome } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
+import ROLES from "src/constants/roles";
 import ROUTES from "src/constants/routes";
 
 const mainSidebar = [
@@ -17,11 +18,7 @@ const mainSidebar = [
     title: "Admin",
     path: ROUTES.admin,
     icon: AiOutlineHome,
-  },
-  {
-    title: "Recruiter",
-    path: ROUTES.recruiter,
-    icon: AiOutlineHome,
+    roles: [ROLES.ADMIN, ROLES.COMPANY_ADMIN],
   },
 ];
 
@@ -33,10 +30,7 @@ const adminSidebar = [
   },
 ];
 
-const recruiterSidebar = [];
-
 export default {
   [ROUTES.dashboard]: mainSidebar,
   [ROUTES.admin]: adminSidebar,
-  [ROUTES.recruiter]: recruiterSidebar,
 };

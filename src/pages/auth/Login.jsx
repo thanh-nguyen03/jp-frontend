@@ -24,10 +24,7 @@ import { setCredential, storeTokens } from "src/redux/state/reducers/authReducer
 import { object, string } from "yup";
 
 const validationSchema = object({
-  username: string()
-    .required("Username is required")
-    .min(3, "Username must be at least 3 characters")
-    .max(20, "Username must be at most 20 characters"),
+  email: string().required("Email is required").email("Email is invalid"),
   password: string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters")
@@ -49,13 +46,13 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    const { username, password } = values;
+    const { email, password } = values;
     try {
-      const data = await login({ username, password }).unwrap();
-      const { accessToken, refreshToken, user } = data.data;
+      const data = await login({ email, password }).unwrap();
+      const { access_token, refresh_token, user } = data.data;
       navigate(ROUTES.dashboard);
       const timeout = setTimeout(() => {
-        dispatch(storeTokens({ accessToken, refreshToken }));
+        dispatch(storeTokens({ access_token, refresh_token }));
         dispatch(setCredential({ user }));
         toast({
           title: "Success",
@@ -110,10 +107,10 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <VStack spacing={4} w="100%">
-            <FormControl id="username">
-              <FormLabel>Username</FormLabel>
-              <Input rounded="md" type="text" placeholder="Username" {...register("username")} />
-              <FormErrorMessage>{errors.username && errors.username.message}</FormErrorMessage>
+            <FormControl id="email">
+              <FormLabel>Email</FormLabel>
+              <Input rounded="md" type="text" placeholder="Email" {...register("email")} />
+              <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>

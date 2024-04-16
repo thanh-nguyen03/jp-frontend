@@ -10,31 +10,34 @@ const useAuth = () => {
         return false;
       }
 
-      return user.roles.map((role) => role.name).includes(role);
+      return user.role === role;
     },
-    [isAuthenticated, user?.roles],
+    [isAuthenticated, user?.role],
   );
 
   const hasAnyRole = useCallback(
-    (roles) => {
+    (...roles) => {
       if (!isAuthenticated) {
         return false;
       }
 
-      return user.roles.map((role) => role.name).some((role) => roles.includes(role));
+      return roles.some((role) => user.role === role);
     },
-    [isAuthenticated, user?.roles],
+    [isAuthenticated, user?.role],
   );
 
-  const displayName = useMemo(() => (isAuthenticated ? user.fullName.trim() : null), [isAuthenticated, user]);
-  const username = useMemo(() => (isAuthenticated ? user.username.trim() : null), [isAuthenticated, user]);
+  const displayName = useMemo(
+    () => (isAuthenticated ? `${user.firstName} ${user.lastName}` : null),
+    [isAuthenticated, user],
+  );
+  const email = useMemo(() => (isAuthenticated ? user.email.trim() : null), [isAuthenticated, user]);
 
   return {
     isAuthenticated,
     hasRole,
     hasAnyRole,
     displayName,
-    username,
+    email,
   };
 };
 
