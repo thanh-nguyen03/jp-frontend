@@ -13,6 +13,9 @@ const ROUTES = {
 
   // Admin routes
   admin: "/admin",
+  adminManageCompanies: "/admin/company",
+  adminCreateCompany: "/admin/company/create",
+  adminCompanyDetail: "/admin/company/:companyId",
 };
 
 export default ROUTES;

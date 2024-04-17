@@ -27,7 +27,7 @@ const validationSchema = object({
   email: string().required("Email is required").email("Email is invalid"),
   password: string()
     .required("Password is required")
-    .min(6, "Password must be at least 6 characters")
+    .min(1, "Password must be at least 6 characters")
     .max(255, "Password must be at most 255 characters"),
 });
 
@@ -89,6 +89,8 @@ const Login = () => {
     }
   }, [error, toast]);
 
+  console.log(errors);
+
   return (
     <Flex pl={20} flex={1} align="center" justifyContent="center">
       <Stack spacing={4}>
@@ -107,12 +109,12 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <VStack spacing={4} w="100%">
-            <FormControl id="email">
+            <FormControl id="email" isInvalid={errors?.email}>
               <FormLabel>Email</FormLabel>
               <Input rounded="md" type="text" placeholder="Email" {...register("email")} />
               <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
             </FormControl>
-            <FormControl id="password">
+            <FormControl id="password" isInvalid={errors?.password}>
               <FormLabel>Password</FormLabel>
               <Input rounded="md" type="password" placeholder="Password" {...register("password")} />
               <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>

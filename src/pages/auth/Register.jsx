@@ -103,7 +103,7 @@ const Register = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <VStack spacing={4} w="100%">
-            <FormControl id="username">
+            <FormControl id="email">
               <FormLabel>Email</FormLabel>
               <Input rounded="md" type="text" placeholder="Email" {...formRegister("email")} />
               <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
