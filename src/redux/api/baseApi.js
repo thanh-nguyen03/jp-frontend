@@ -25,10 +25,10 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
   if (result.error?.status === 401) {
     const refreshResult = await baseApiSlice(
       {
-        url: "/auth/refresh",
+        url: "/auth/refresh-token",
         method: "POST",
         body: {
-          refreshToken: localStorage.getItem("refreshToken"),
+          refresh_token: localStorage.getItem("refreshToken"),
         },
       },
       api,
@@ -36,9 +36,9 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
     );
 
     if (refreshResult.data) {
-      const { accessToken, refreshToken, user } = refreshResult.data.data;
+      const { access_token, refresh_token, user } = refreshResult.data.data;
       api.dispatch(setCredential({ user }));
-      api.dispatch(storeTokens({ accessToken, refreshToken }));
+      api.dispatch(storeTokens({ access_token, refresh_token }));
       result = await baseApiSlice(args, api, extraOptions);
     } else {
       api.dispatch(logout());
@@ -50,6 +50,7 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
 
 const baseApi = createApi({
   baseQuery: baseQueryWithReAuth,
+  tagTypes: ["Company"],
   endpoints: () => ({}),
 });
 

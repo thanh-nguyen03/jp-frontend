@@ -1,8 +1,9 @@
-import { Container } from "@chakra-ui/react";
+import { Container, Heading } from "@chakra-ui/react";
 
-const Page = ({ children }) => {
+const Page = ({ title, children }) => {
   return (
-    <Container maxW="container.xl" py={2}>
+    <Container maxW="container.xl" mt={2} py={4}>
+      <Heading mb={2}>{title}</Heading>
       {children}
     </Container>
   );

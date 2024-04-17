@@ -2,7 +2,16 @@ import { Navigate } from "react-router-dom";
 import AuthLayout from "src/layouts/auth";
 import Forbidden from "src/pages/fallback/Forbidden";
 import NotFound from "src/pages/fallback/NotFound";
-import { AdminDashboard, Login, MainDashboard, RecruiterDashboard, Register } from "src/constants/imports";
+import {
+  AdminCompanyDetail,
+  AdminCreateCompany,
+  AdminDashboard,
+  AdminManageCompany,
+  Login,
+  MainDashboard,
+  RecruiterDashboard,
+  Register,
+} from "src/constants/imports";
 import ROUTES from "src/constants/routes";
 import MainLayout from "src/layouts/main";
 
@@ -44,6 +53,23 @@ const adminRoutes = {
     {
       index: true,
       element: <AdminDashboard />,
+    },
+    {
+      path: ROUTES.adminManageCompanies,
+      children: [
+        {
+          index: true,
+          element: <AdminManageCompany />,
+        },
+        {
+          path: ROUTES.adminCreateCompany,
+          element: <AdminCreateCompany />,
+        },
+        {
+          path: ROUTES.adminCompanyDetail,
+          element: <AdminCompanyDetail />,
+        },
+      ],
     },
   ],
 };

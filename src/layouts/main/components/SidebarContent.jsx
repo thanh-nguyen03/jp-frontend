@@ -25,7 +25,7 @@ const SidebarContent = ({ ...props }) => {
       {...props}
     >
       <Flex px="4" py="5" align="center">
-        <Icon as={SiMarketo} h={8} w={8} />
+        <Icon as={SiMarketo} h={8} w={8} color="primary" />
         <Text fontSize="2xl" ml="2" color={useColorModeValue("brand.500", "white")} fontWeight="semibold">
           IT Job Portal
         </Text>
@@ -33,7 +33,7 @@ const SidebarContent = ({ ...props }) => {
       <Flex direction="column" as="nav" fontSize="md" color="gray.600" aria-label="Main Navigation">
         {sidebarConfig.map((item, index) => (
           <Link to={item.path} key={index}>
-            <NavItem key={index} icon={item.icon}>
+            <NavItem key={index} icon={item.icon} path={item.path}>
               {item.title}
             </NavItem>
           </Link>
