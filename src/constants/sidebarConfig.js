@@ -1,6 +1,7 @@
 import { AiOutlineHome } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
-import { ImProfile } from "react-icons/im";
+import { GrAnnounce } from "react-icons/gr";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RiAdminFill } from "react-icons/ri";
 import ROLES from "src/constants/roles";
@@ -13,15 +14,34 @@ const mainSidebar = [
     icon: AiOutlineHome,
   },
   {
-    title: "Profile",
-    path: ROUTES.userProfile,
-    icon: ImProfile,
+    title: "My Company",
+    path: ROUTES.companyAdmin,
+    icon: GoOrganization,
+    roles: [ROLES.COMPANY_ADMIN, ROLES.COMPANY_HR],
   },
   {
     title: "Admin",
     path: ROUTES.admin,
     icon: RiAdminFill,
-    roles: [ROLES.ADMIN, ROLES.COMPANY_ADMIN],
+    roles: [ROLES.ADMIN],
+  },
+];
+
+const companyAccountSidebar = [
+  {
+    title: "Home",
+    path: ROUTES.dashboard,
+    icon: IoArrowBackCircleSharp,
+  },
+  {
+    title: "Company Dashboard",
+    path: ROUTES.companyAdmin,
+    icon: FaHome,
+  },
+  {
+    title: "Recruitments",
+    path: ROUTES.companyManageRecruitments,
+    icon: GrAnnounce,
   },
 ];
 
@@ -45,5 +65,6 @@ const adminSidebar = [
 
 export default {
   [ROUTES.dashboard]: mainSidebar,
+  [ROUTES.companyAdmin]: companyAccountSidebar,
   [ROUTES.admin]: adminSidebar,
 };

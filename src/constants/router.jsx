@@ -7,9 +7,12 @@ import {
   AdminCreateCompany,
   AdminDashboard,
   AdminManageCompany,
+  CompanyAdminDashboard,
+  CompanyManageRecruitments,
+  CompanyRecruitmentCreate,
+  CompanyRecruitmentDetail,
   Login,
   MainDashboard,
-  RecruiterDashboard,
   Register,
 } from "src/constants/imports";
 import ROUTES from "src/constants/routes";
@@ -35,13 +38,30 @@ const mainRoutes = {
   ],
 };
 
-const recruiterRoutes = {
-  path: ROUTES.recruiter,
+const companyAdminRoutes = {
+  path: ROUTES.companyAdmin,
   element: <MainLayout />,
   children: [
     {
       index: true,
-      element: <RecruiterDashboard />,
+      element: <CompanyAdminDashboard />,
+    },
+    {
+      path: ROUTES.companyManageRecruitments,
+      children: [
+        {
+          index: true,
+          element: <CompanyManageRecruitments />,
+        },
+        {
+          path: ROUTES.companyRecruitmentCreate,
+          element: <CompanyRecruitmentCreate />,
+        },
+        {
+          path: ROUTES.companyRecruitmentDetail,
+          element: <CompanyRecruitmentDetail />,
+        },
+      ],
     },
   ],
 };
@@ -77,7 +97,7 @@ const adminRoutes = {
 export default [
   mainRoutes,
   authRoutes,
-  recruiterRoutes,
+  companyAdminRoutes,
   adminRoutes,
   {
     path: ROUTES.dashboard,

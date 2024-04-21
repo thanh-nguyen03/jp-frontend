@@ -38,14 +38,14 @@ const MainLayout = () => {
 
   return (
     <Box as="section" bg={useColorModeValue("gray.50", "gray.700")} minH="100vh">
-      <SidebarContent display={{ base: "none", md: "unset" }} />
+      <SidebarContent display={{ base: "none", lg: "unset" }} />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
           <SidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
+      <Box ml={{ base: 0, lg: 60 }} transition=".3s ease">
         <Flex
           as="header"
           align="center"

@@ -21,7 +21,7 @@ const SidebarContent = ({ ...props }) => {
       bg={useColorModeValue("white", "gray.800")}
       borderColor={useColorModeValue("inherit", "gray.700")}
       borderRightWidth="1px"
-      w="60"
+      w="68"
       {...props}
     >
       <Flex px="4" py="5" align="center">
