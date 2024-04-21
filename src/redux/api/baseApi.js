@@ -50,7 +50,7 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
 
 const baseApi = createApi({
   baseQuery: baseQueryWithReAuth,
-  tagTypes: ["Company"],
+  tagTypes: ["Company", "Recruitment"],
   endpoints: () => ({}),
 });
 

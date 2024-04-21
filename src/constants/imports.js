@@ -7,7 +7,7 @@ const Register = Loadable(lazy(() => import("src/pages/auth/Register")));
 
 // Dashboard
 const MainDashboard = Loadable(lazy(() => import("src/pages/main/Dashboard")));
-const RecruiterDashboard = Loadable(lazy(() => import("src/pages/recruiter/Dashboard")));
+const CompanyAdminDashboard = Loadable(lazy(() => import("src/pages/company-admin/Dashboard")));
 const AdminDashboard = Loadable(lazy(() => import("src/pages/admin/Dashboard")));
 
 // Company
@@ -15,13 +15,28 @@ const AdminManageCompany = Loadable(lazy(() => import("src/pages/admin/companies
 const AdminCreateCompany = Loadable(lazy(() => import("src/pages/admin/companies/CompanyCreate")));
 const AdminCompanyDetail = Loadable(lazy(() => import("src/pages/admin/companies/CompanyDetail")));
 
+// Recruitment
+const CompanyManageRecruitments = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentList")));
+const CompanyRecruitmentDetail = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentDetail")));
+const CompanyRecruitmentCreate = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentCreate")));
+
 export {
+  // Auth
   Login,
   Register,
+
+  // Dashboard
   MainDashboard,
-  RecruiterDashboard,
+  CompanyAdminDashboard,
   AdminDashboard,
+
+  // Company
   AdminManageCompany,
   AdminCreateCompany,
   AdminCompanyDetail,
+
+  // Recruitment
+  CompanyManageRecruitments,
+  CompanyRecruitmentDetail,
+  CompanyRecruitmentCreate,
 };
