@@ -10,6 +10,8 @@ const ROUTES = {
   // Main routes
   dashboard: "/",
   userProfile: "/profile",
+  recruitments: "/recruitments",
+  recruitmentDetail: "/recruitments/:recruitmentId",
 
   // Company admin routes
   companyAdmin: "/manage/my-company",

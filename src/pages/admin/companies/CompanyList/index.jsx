@@ -42,7 +42,9 @@ const CompanyList = () => {
   return (
     <Page>
       <HStack justifyContent="space-between">
-        <Heading mb={2}>Company List</Heading>
+        <Heading size="lg" mb={2}>
+          Company List
+        </Heading>
 
         <Link to={ROUTES.adminCreateCompany}>
           <Button colorScheme="green" leftIcon={<Icon as={IoAdd} />}>

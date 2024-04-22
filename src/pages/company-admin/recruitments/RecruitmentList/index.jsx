@@ -44,7 +44,9 @@ const RecruitmentList = () => {
   return (
     <Page>
       <HStack justifyContent="space-between">
-        <Heading mb={2}>Recruitment List</Heading>
+        <Heading size="lg" mb={2}>
+          Recruitment List
+        </Heading>
 
         <Link to={ROUTES.companyRecruitmentCreate}>
           <Button colorScheme="green" leftIcon={<Icon as={IoAdd} />}>

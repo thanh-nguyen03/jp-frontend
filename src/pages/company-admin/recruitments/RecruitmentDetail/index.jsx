@@ -70,7 +70,9 @@ const RecruitmentDetail = () => {
         confirmBtnColorScheme="red"
       />
       <HStack justifyContent="space-between">
-        <Heading>{data?.data.title}</Heading>
+        <Heading size="lg" mb={2}>
+          {data?.data.title}
+        </Heading>
 
         <Button isLoading={isDeleting} colorScheme="red" onClick={onOpen}>
           Delete recruitment

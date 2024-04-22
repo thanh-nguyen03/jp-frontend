@@ -14,6 +14,11 @@ const mainSidebar = [
     icon: AiOutlineHome,
   },
   {
+    title: "Recruitments",
+    path: ROUTES.recruitments,
+    icon: GrAnnounce,
+  },
+  {
     title: "My Company",
     path: ROUTES.companyAdmin,
     icon: GoOrganization,
@@ -39,7 +44,7 @@ const companyAccountSidebar = [
     icon: FaHome,
   },
   {
-    title: "Recruitments",
+    title: "Manage Recruitments",
     path: ROUTES.companyManageRecruitments,
     icon: GrAnnounce,
   },

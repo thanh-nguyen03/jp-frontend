@@ -42,10 +42,10 @@ const MainLayout = () => {
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
-          <SidebarContent w="full" borderRight="none" />
+          <SidebarContent borderRight="none" />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, lg: 60 }} transition=".3s ease">
+      <Box ml={{ base: 0, lg: 72 }} transition=".3s ease">
         <Flex
           as="header"
           align="center"

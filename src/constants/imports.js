@@ -16,9 +16,14 @@ const AdminCreateCompany = Loadable(lazy(() => import("src/pages/admin/companies
 const AdminCompanyDetail = Loadable(lazy(() => import("src/pages/admin/companies/CompanyDetail")));
 
 // Recruitment
+// for admins
 const CompanyManageRecruitments = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentList")));
 const CompanyRecruitmentDetail = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentDetail")));
 const CompanyRecruitmentCreate = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentCreate")));
+
+// for users
+const MainRecruitments = Loadable(lazy(() => import("src/pages/main/recruitments/RecruitmentList")));
+const MainRecruitmentDetail = Loadable(lazy(() => import("src/pages/main/recruitments/RecruitmentDetail")));
 
 export {
   // Auth
@@ -39,4 +44,6 @@ export {
   CompanyManageRecruitments,
   CompanyRecruitmentDetail,
   CompanyRecruitmentCreate,
+  MainRecruitments,
+  MainRecruitmentDetail,
 };

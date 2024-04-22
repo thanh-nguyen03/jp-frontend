@@ -21,8 +21,8 @@ const SidebarContent = ({ ...props }) => {
       bg={useColorModeValue("white", "gray.800")}
       borderColor={useColorModeValue("inherit", "gray.700")}
       borderRightWidth="1px"
-      w="68"
       {...props}
+      w="72"
     >
       <Flex px="4" py="5" align="center">
         <Icon as={SiMarketo} h={8} w={8} color="primary" />
