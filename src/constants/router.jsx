@@ -13,6 +13,8 @@ import {
   CompanyRecruitmentDetail,
   Login,
   MainDashboard,
+  MainRecruitmentDetail,
+  MainRecruitments,
   Register,
 } from "src/constants/imports";
 import ROUTES from "src/constants/routes";
@@ -34,6 +36,19 @@ const mainRoutes = {
     {
       index: true,
       element: <MainDashboard />,
+    },
+    {
+      path: ROUTES.recruitments,
+      children: [
+        {
+          index: true,
+          element: <MainRecruitments />,
+        },
+        {
+          path: ROUTES.recruitmentDetail,
+          element: <MainRecruitmentDetail />,
+        },
+      ],
     },
   ],
 };

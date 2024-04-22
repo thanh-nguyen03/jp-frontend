@@ -73,7 +73,9 @@ const CompanyDetail = () => {
         confirmBtnColorScheme="red"
       />
       <HStack justifyContent="space-between">
-        <Heading mb={2}>{data?.data?.name}</Heading>
+        <Heading size="lg" mb={2}>
+          {data?.data?.name}
+        </Heading>
 
         <Button isLoading={isDeleting} colorScheme="red" onClick={onOpen}>
           Delete company

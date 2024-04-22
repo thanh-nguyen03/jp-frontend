@@ -3,6 +3,23 @@ import baseApi from "src/redux/api/baseApi";
 
 const recruitmentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
+    // common endpoints
+    getAllRecruitments: build.query({
+      query: (query) => ({
+        url: `/recruitments?${convertObjectToQueryParams(query)}`,
+        method: "GET",
+      }),
+      providesTags: ["Recruitment"],
+    }),
+    getRecruitmentDetailForUser: build.query({
+      query: (recruitmentId) => ({
+        url: `/recruitments/${recruitmentId}`,
+        method: "GET",
+      }),
+      providesTags: ["Recruitment"],
+    }),
+
+    // company admin endpoints
     getCompanyRecruitments: build.query({
       query: (query) => ({
         url: `/admin/recruitments?${convertObjectToQueryParams(query)}`,
@@ -44,6 +61,11 @@ const recruitmentApi = baseApi.injectEndpoints({
 });
 
 export const {
+  // common hooks
+  useGetAllRecruitmentsQuery,
+  useGetRecruitmentDetailForUserQuery,
+
+  // company admin hooks
   useGetCompanyRecruitmentsQuery,
   useGetRecruitmentDetailQuery,
   useCreateRecruitmentMutation,
