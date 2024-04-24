@@ -13,6 +13,9 @@ const ROUTES = {
   recruitments: "/recruitments",
   recruitmentDetail: "/recruitments/:recruitmentId",
 
+  companies: "/companies",
+  companyDetail: "/companies/:companyId",
+
   // Company admin routes
   companyAdmin: "/manage/my-company",
   companyManageRecruitments: "/manage/my-company/recruitments",
