@@ -1,4 +1,5 @@
 import { AiOutlineHome } from "react-icons/ai";
+import { CgOrganisation } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
 import { GrAnnounce } from "react-icons/gr";
@@ -12,6 +13,11 @@ const mainSidebar = [
     title: "Home",
     path: ROUTES.dashboard,
     icon: AiOutlineHome,
+  },
+  {
+    title: "Companies",
+    path: ROUTES.companies,
+    icon: CgOrganisation,
   },
   {
     title: "Recruitments",

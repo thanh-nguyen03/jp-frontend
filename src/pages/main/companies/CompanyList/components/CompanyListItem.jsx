@@ -1,23 +1,9 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Heading,
-  HStack,
-  Icon,
-  Image,
-  Stack,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, CardFooter, Heading, HStack, Icon, Image, Stack, Text } from "@chakra-ui/react";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import jobType from "src/constants/jobType";
 import ROUTES from "src/constants/routes";
 
-const RecruitmentListItem = ({ recruitment, company = null }) => {
+const CompanyListItem = ({ company }) => {
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
@@ -37,21 +23,18 @@ const RecruitmentListItem = ({ recruitment, company = null }) => {
 
       <Stack w="100%">
         <CardBody>
-          <Link to={ROUTES.recruitmentDetail.replace(":recruitmentId", recruitment.id)}>
-            <Heading size="md">{recruitment.title}</Heading>
-          </Link>
+          <Link to={ROUTES.companyDetail.replace(":companyId", company.id)}>
+            <Heading size="md">{company.name}</Heading>
 
-          <Text>{company?.name || recruitment.company.name}</Text>
-          <Tag colorScheme="green" mt={2}>
-            {jobType[recruitment.jobType]}
-          </Tag>
+            <Text>Number of recruitments: {company.recruitments.length}</Text>
+          </Link>
         </CardBody>
 
         <CardFooter justifyContent="space-between" alignItems="center">
           <Box>
             <HStack>
               <Icon as={FaLocationDot} color="primary" fontSize={18} />
-              <Text>{company?.address || recruitment.company.address}</Text>
+              <Text>{company.address}</Text>
             </HStack>
           </Box>
           <Button
@@ -59,9 +42,9 @@ const RecruitmentListItem = ({ recruitment, company = null }) => {
             variant="solid"
             size="sm"
             colorScheme="green"
-            to={ROUTES.recruitmentDetail.replace(":recruitmentId", recruitment.id)}
+            to={ROUTES.companyDetail.replace(":recruitmentId", company.id)}
           >
-            Apply Now
+            View Company
           </Button>
         </CardFooter>
       </Stack>
@@ -69,4 +52,4 @@ const RecruitmentListItem = ({ recruitment, company = null }) => {
   );
 };
 
-export default RecruitmentListItem;
+export default CompanyListItem;

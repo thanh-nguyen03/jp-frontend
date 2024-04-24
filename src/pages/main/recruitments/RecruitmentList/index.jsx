@@ -8,7 +8,7 @@ import { useGetAllRecruitmentsQuery } from "src/redux/api/recruitmentApi";
 
 const MainRecruitmentList = () => {
   const [query, setQuery] = useState({});
-  const { data, isLoading } = useGetAllRecruitmentsQuery(query);
+  const { data, isLoading, isFetching } = useGetAllRecruitmentsQuery(query);
 
   const handleSearch = (searchInfo) => {
     setQuery(searchInfo);
@@ -16,10 +16,12 @@ const MainRecruitmentList = () => {
 
   return (
     <Page title="Recruitment List">
-      <RecruitmentSearchBar handleSearch={handleSearch} />
+      <RecruitmentSearchBar handleSearch={handleSearch} isSearching={isLoading || isFetching} />
       <Box my={4} bgColor="white" p={4} rounded="sm">
         {isLoading && <LoadingSpinner size="lg" />}
-        {data && data.data.map((recruitment) => <RecruitmentListItem key={recruitment.id} recruitment={recruitment} />)}
+        {data?.data.length > 0 &&
+          data.data.map((recruitment) => <RecruitmentListItem key={recruitment.id} recruitment={recruitment} />)}
+        {data?.data.length === 0 && !isLoading && <Box textAlign="center">No recruitment found</Box>}
       </Box>
     </Page>
   );

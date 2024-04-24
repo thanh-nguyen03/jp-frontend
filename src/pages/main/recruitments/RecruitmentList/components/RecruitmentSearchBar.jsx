@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-export default function RecruitmentSearchBar({ handleSearch }) {
+export default function RecruitmentSearchBar({ handleSearch, isSearching }) {
   const [searchInfo, _setSearchInfo] = useState({
     title: "",
     jobType: "",
@@ -110,6 +110,7 @@ export default function RecruitmentSearchBar({ handleSearch }) {
         </Box>
 
         <Button
+          isLoading={isSearching}
           bg="primary"
           color="white"
           _hover={{

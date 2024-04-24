@@ -2,7 +2,7 @@ import { Card, CardBody } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import LoadingScreen from "src/components/LoadingScreen";
 import Page from "src/components/Page";
-import RecruitmentDetailTopCard from "src/pages/main/recruitments/RecruitmentDetail/RecruitmentDetailTopCard";
+import RecruitmentDetailTopCard from "src/pages/main/recruitments/RecruitmentDetail/components/RecruitmentDetailTopCard";
 import { useGetRecruitmentDetailForUserQuery } from "src/redux/api/recruitmentApi";
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
