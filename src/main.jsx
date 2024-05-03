@@ -6,8 +6,12 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider as StoreProvider } from "react-redux";
 import theme from "src/constants/theme";
 import store from "src/redux/store";
+import { pdfjs } from "react-pdf";
 
 const rootElement = document.getElementById("root");
+
+// React PDF
+pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.js", import.meta.url).toString();
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
