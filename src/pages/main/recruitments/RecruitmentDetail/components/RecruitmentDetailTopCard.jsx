@@ -1,12 +1,13 @@
 import { Badge, Button, Card, CardBody, Heading, HStack, Icon, Text, VStack } from "@chakra-ui/react";
 import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
 import { FaLocationDot, FaMoneyCheckDollar } from "react-icons/fa6";
 import { LiaUserClockSolid } from "react-icons/lia";
 import { TbSend } from "react-icons/tb";
 import jobType from "src/constants/jobType";
-import { formatDate } from "src/helpers/date";
+import { formatDate, formatDateTime } from "src/helpers/date";
 
-const RecruitmentDetailTopCard = ({ recruitment }) => {
+const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onViewApplication }) => {
   return (
     <Card overflow="hidden" variant="outline" my={4}>
       <CardBody>
@@ -45,16 +46,39 @@ const RecruitmentDetailTopCard = ({ recruitment }) => {
           />
         </HStack>
 
-        <Button
-          leftIcon={<Icon fontSize={20} as={TbSend} />}
-          variant="solid"
-          size="sm"
-          colorScheme="green"
-          w="100%"
-          my={4}
-        >
-          Apply Now
-        </Button>
+        {!userApplication && (
+          <Button
+            leftIcon={<Icon fontSize={20} as={TbSend} />}
+            variant="solid"
+            size="sm"
+            colorScheme="green"
+            w="100%"
+            my={4}
+            onClick={onApply}
+          >
+            Apply Now
+          </Button>
+        )}
+
+        {userApplication && (
+          <>
+            <Text fontSize="md">
+              You have applied for this job at: {formatDateTime(new Date(userApplication.createdAt))}
+            </Text>
+
+            <Button
+              leftIcon={<Icon fontSize={20} as={FaEye} />}
+              variant="solid"
+              size="sm"
+              colorScheme="green"
+              w="100%"
+              my={4}
+              onClick={onViewApplication}
+            >
+              Applied. Click to view
+            </Button>
+          </>
+        )}
       </CardBody>
     </Card>
   );
