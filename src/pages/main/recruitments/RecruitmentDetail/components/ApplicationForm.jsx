@@ -9,8 +9,6 @@ import { Document, Page } from "react-pdf";
 import ConfirmModal from "src/components/ConfirmModal";
 import FormInput from "src/components/form/FormInput";
 import { object, string } from "yup";
-import "react-pdf/dist/Page/TextLayer.css";
-import "react-pdf/dist/Page/AnnotationLayer.css";
 
 const PDFDocumentWrapper = styled.div`
   border: 1px solid black;
@@ -66,10 +64,11 @@ const ApplicationForm = ({ onSubmit, isSubmitting, application }) => {
   return (
     <Flex w="100%" flex={1} align="center" justifyContent="center" mt={4}>
       <ConfirmModal
+        isLoading={isSubmitting}
         isOpen={isOpen}
         onClose={onClose}
         title="Are you sure to apply for this recruitment? You can't redo this action!!!"
-        onConfirm={() => handleSubmit(onSubmit)}
+        onConfirm={handleSubmit(onSubmit)}
         confirmBtnColorScheme="green"
       />
 
@@ -142,7 +141,6 @@ const ApplicationForm = ({ onSubmit, isSubmitting, application }) => {
             colorScheme="green"
             w="100%"
             my={2}
-            isLoading={isSubmitting}
             onClick={handleButtonClick}
           >
             {application ? "Update" : "Apply"}

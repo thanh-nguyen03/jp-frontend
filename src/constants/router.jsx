@@ -9,6 +9,8 @@ import {
   AdminManageCompany,
   CompanyAdminDashboard,
   CompanyManageRecruitments,
+  CompanyRecruitmentApplicationDetail,
+  CompanyRecruitmentApplications,
   CompanyRecruitmentCreate,
   CompanyRecruitmentDetail,
   Login,
@@ -89,7 +91,25 @@ const companyAdminRoutes = {
         },
         {
           path: ROUTES.companyRecruitmentDetail,
-          element: <CompanyRecruitmentDetail />,
+          children: [
+            {
+              index: true,
+              element: <CompanyRecruitmentDetail />,
+            },
+            {
+              path: ROUTES.companyRecruitmentApplications,
+              children: [
+                {
+                  index: true,
+                  element: <CompanyRecruitmentApplications />,
+                },
+                {
+                  path: ROUTES.companyRecruitmentApplicationDetail,
+                  element: <CompanyRecruitmentApplicationDetail />,
+                },
+              ],
+            },
+          ],
         },
       ],
     },

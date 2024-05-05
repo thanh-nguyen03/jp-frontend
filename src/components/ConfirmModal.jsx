@@ -16,6 +16,7 @@ const ConfirmModal = ({
   isOpen,
   onClose,
   confirmBtnColorScheme = "green",
+  isLoading = false,
 }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -28,7 +29,7 @@ const ConfirmModal = ({
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme={confirmBtnColorScheme} mr={3} onClick={onConfirm}>
+          <Button isLoading={isLoading} colorScheme={confirmBtnColorScheme} mr={3} onClick={onConfirm}>
             Confirm
           </Button>
           <Button colorScheme="gray" mr={3} onClick={onClose}>

@@ -66,7 +66,7 @@ const RecruitmentList = () => {
             <Table variant="simple" size="lg">
               <Thead>
                 <Tr>
-                  <Th>Id</Th>
+                  <Th>No</Th>
                   <Th>Title</Th>
                   <Th>Job Type</Th>
                   <Th>Deadline</Th>
@@ -75,9 +75,9 @@ const RecruitmentList = () => {
               </Thead>
 
               <Tbody>
-                {data?.data.map((recruitment) => (
+                {data?.data.map((recruitment, index) => (
                   <Tr key={recruitment.id}>
-                    <Th>{recruitment.id}</Th>
+                    <Th>{index + 1}</Th>
                     <Th>{recruitment.title}</Th>
                     <Th>{jobType[recruitment.jobType]}</Th>
                     <Th>{formatDateTime(recruitment.deadline)}</Th>
@@ -85,7 +85,12 @@ const RecruitmentList = () => {
                       <ButtonGroup>
                         <Link to={ROUTES.companyRecruitmentDetail.replace(":recruitmentId", recruitment.id)}>
                           <Button colorScheme="gray" size="md">
-                            View
+                            Detail
+                          </Button>
+                        </Link>
+                        <Link to={ROUTES.companyRecruitmentApplications.replace(":recruitmentId", recruitment.id)}>
+                          <Button colorScheme="teal" size="md">
+                            Application List
                           </Button>
                         </Link>
                       </ButtonGroup>

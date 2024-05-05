@@ -29,7 +29,6 @@ const RecruitmentDetail = () => {
   useToastResponseError(deleteRecruitmentError);
 
   const handleSubmit = async (values) => {
-    console.log(values);
     try {
       await updateRecruitment({ recruitmentId, ...values }).unwrap();
       toast({

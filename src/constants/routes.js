@@ -21,6 +21,8 @@ const ROUTES = {
   companyManageRecruitments: "/manage/my-company/recruitments",
   companyRecruitmentCreate: "/manage/my-company/recruitments/create",
   companyRecruitmentDetail: "/manage/my-company/recruitments/:recruitmentId",
+  companyRecruitmentApplications: "/manage/my-company/recruitments/:recruitmentId/applications",
+  companyRecruitmentApplicationDetail: "/manage/my-company/recruitments/:recruitmentId/applications/:applicationId",
 
   // Admin routes
   admin: "/admin",
