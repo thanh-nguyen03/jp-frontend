@@ -1,4 +1,5 @@
 import { Badge, Button, Card, CardBody, Heading, HStack, Icon, Text, VStack } from "@chakra-ui/react";
+import { useMemo } from "react";
 import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
 import { FaLocationDot, FaMoneyCheckDollar } from "react-icons/fa6";
@@ -8,6 +9,19 @@ import jobType from "src/constants/jobType";
 import { formatDate, formatDateTime } from "src/helpers/date";
 
 const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onViewApplication }) => {
+  const statusColor = useMemo(() => {
+    switch (userApplication.status) {
+      case "PENDING":
+        return "orange";
+      case "APPROVED":
+        return "green";
+      case "REJECTED":
+        return "red";
+      default:
+        return "gray";
+    }
+  }, [userApplication?.status]);
+
   return (
     <Card overflow="hidden" variant="outline" my={4}>
       <CardBody>
@@ -69,7 +83,12 @@ const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onVie
             <Text fontSize="lg">
               You have applied for this job at: {formatDateTime(new Date(userApplication.createdAt))}
             </Text>
-            <Text fontSize="lg">Status: {userApplication.status}</Text>
+            <Text fontSize="lg">
+              Status:{" "}
+              <Text display="inline" fontWeight="bold" color={statusColor}>
+                {userApplication.status}
+              </Text>
+            </Text>
 
             <Button
               leftIcon={<Icon fontSize={20} as={FaEye} />}
