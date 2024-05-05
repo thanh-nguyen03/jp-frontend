@@ -19,6 +19,10 @@ const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onVie
           </Badge>
         </HStack>
 
+        <Text fontSize="lg" mt={2}>
+          {recruitment.company.name}
+        </Text>
+
         <HStack my={4} mt={6} justifyContent="space-between">
           <RecruitmentShortInfo
             icon={FaMoneyCheckDollar}
@@ -62,9 +66,10 @@ const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onVie
 
         {userApplication && (
           <>
-            <Text fontSize="md">
+            <Text fontSize="lg">
               You have applied for this job at: {formatDateTime(new Date(userApplication.createdAt))}
             </Text>
+            <Text fontSize="lg">Status: {userApplication.status}</Text>
 
             <Button
               leftIcon={<Icon fontSize={20} as={FaEye} />}

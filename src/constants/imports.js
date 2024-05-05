@@ -23,6 +23,12 @@ const MainCompanyDetail = Loadable(lazy(() => import("src/pages/main/companies/C
 const CompanyManageRecruitments = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentList")));
 const CompanyRecruitmentDetail = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentDetail")));
 const CompanyRecruitmentCreate = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentCreate")));
+const CompanyRecruitmentApplications = Loadable(
+  lazy(() => import("src/pages/company-admin/recruitments/RecruitmentDetail/RecruitmentApplications")),
+);
+const CompanyRecruitmentApplicationDetail = Loadable(
+  lazy(() => import("src/pages/company-admin/recruitments/RecruitmentDetail/RecruitmentApplicationDetail")),
+);
 
 // for users
 const MainRecruitments = Loadable(lazy(() => import("src/pages/main/recruitments/RecruitmentList")));
@@ -49,6 +55,8 @@ export {
   CompanyManageRecruitments,
   CompanyRecruitmentDetail,
   CompanyRecruitmentCreate,
+  CompanyRecruitmentApplications,
+  CompanyRecruitmentApplicationDetail,
   MainRecruitments,
   MainRecruitmentDetail,
 };

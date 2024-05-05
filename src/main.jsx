@@ -7,6 +7,8 @@ import { Provider as StoreProvider } from "react-redux";
 import theme from "src/constants/theme";
 import store from "src/redux/store";
 import { pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/TextLayer.css";
+import "react-pdf/dist/Page/AnnotationLayer.css";
 
 const rootElement = document.getElementById("root");
 
