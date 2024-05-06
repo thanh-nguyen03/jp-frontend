@@ -4,7 +4,7 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-const ApplicationChart = ({ chartData }) => {
+const ApplicationStatusChart = ({ chartData }) => {
   const data = {
     labels: ["Approved", "Pending", "Rejected"],
     datasets: [
@@ -18,8 +18,8 @@ const ApplicationChart = ({ chartData }) => {
     ],
   };
   return (
-    <HStack justifyContent="center" mt={10}>
-      <Box w="50%">
+    <HStack justifyContent="center" mt={10} w="100%">
+      <Box w="80%">
         <Pie data={data} />
         <Heading textAlign="center" size="sm" mt={4}>
           Application Status
@@ -29,4 +29,4 @@ const ApplicationChart = ({ chartData }) => {
   );
 };
 
-export default ApplicationChart;
+export default ApplicationStatusChart;

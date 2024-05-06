@@ -10,7 +10,7 @@ const StatCard = ({ data }) => {
   };
 
   return (
-    <motion.div whileHover={{ translateY: -5 }}>
+    <motion.div style={{ width: "100%" }} whileHover={{ translateY: -5 }}>
       <Stack
         direction="column"
         rounded="md"

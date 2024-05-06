@@ -16,8 +16,36 @@ const adminApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getCompanyHRs: build.query({
+      query: () => ({
+        url: `/admin/companies/my-company/hr`,
+        method: "GET",
+      }),
+      providesTags: ["CompanyHR"],
+    }),
+    createCompanyHR: build.mutation({
+      query: (body) => ({
+        url: `/admin/companies/my-company/hr`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["CompanyHR"],
+    }),
+    deleteCompanyHR: build.mutation({
+      query: (hrId) => ({
+        url: `/admin/companies/my-company/hr/${hrId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["CompanyHR"],
+    }),
   }),
 });
 
-export const { useGetCommonStatisticsQuery, useGetCompanyStatisticsQuery } = adminApi;
+export const {
+  useGetCommonStatisticsQuery,
+  useGetCompanyStatisticsQuery,
+  useGetCompanyHRsQuery,
+  useCreateCompanyHRMutation,
+  useDeleteCompanyHRMutation,
+} = adminApi;
 export default adminApi;
