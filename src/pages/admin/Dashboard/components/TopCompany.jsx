@@ -12,6 +12,9 @@ const options = {
     title: {
       display: true,
       text: "Top Companies",
+      font: {
+        size: 18,
+      },
     },
   },
 };

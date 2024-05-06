@@ -8,8 +8,16 @@ const adminApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+
+    // company admin endpoints
+    getCompanyStatistics: build.query({
+      query: () => ({
+        url: "/admin/statistics/company",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetCommonStatisticsQuery } = adminApi;
+export const { useGetCommonStatisticsQuery, useGetCompanyStatisticsQuery } = adminApi;
 export default adminApi;

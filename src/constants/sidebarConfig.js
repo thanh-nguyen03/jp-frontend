@@ -15,14 +15,14 @@ const mainSidebar = [
     icon: AiOutlineHome,
   },
   {
-    title: "Companies",
-    path: ROUTES.companies,
-    icon: CgOrganisation,
-  },
-  {
     title: "Recruitments",
     path: ROUTES.recruitments,
     icon: GrAnnounce,
+  },
+  {
+    title: "Companies",
+    path: ROUTES.companies,
+    icon: CgOrganisation,
   },
   {
     title: "My Company",

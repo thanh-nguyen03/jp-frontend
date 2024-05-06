@@ -2,7 +2,7 @@ import { Box, Heading, Progress, SimpleGrid } from "@chakra-ui/react";
 import { FaBriefcase, FaBuilding, FaFileAlt, FaUserAlt } from "react-icons/fa";
 import Page from "src/components/Page";
 import ROUTES from "src/constants/routes";
-import StatCard from "src/pages/admin/Dashboard/components/StatCard";
+import StatCard from "src/components/StatCard";
 import TopCompaniesChart from "src/pages/admin/Dashboard/components/TopCompany";
 import UserChart from "src/pages/admin/Dashboard/components/UserChart";
 import { useGetCommonStatisticsQuery } from "src/redux/api/adminApi";

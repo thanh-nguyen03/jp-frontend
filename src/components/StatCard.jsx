@@ -54,7 +54,7 @@ const StatCard = ({ data }) => {
             height={0}
             alignItems="center"
             _groupHover={{ visibility: "visible", opacity: 1, height: "40px" }}
-            bg={useColorModeValue("gray.100", "gray.800")}
+            bg="gray.100"
             w="100%"
             transition="opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, height 0.3s ease-in-out"
           >

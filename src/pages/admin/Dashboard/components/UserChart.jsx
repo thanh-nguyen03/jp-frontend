@@ -12,6 +12,9 @@ const options = {
     title: {
       display: true,
       text: "User Created Statistics",
+      font: {
+        size: 18,
+      },
     },
   },
 };
