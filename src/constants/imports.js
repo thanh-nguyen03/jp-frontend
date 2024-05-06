@@ -18,6 +18,10 @@ const AdminCompanyDetail = Loadable(lazy(() => import("src/pages/admin/companies
 const MainCompanies = Loadable(lazy(() => import("src/pages/main/companies/CompanyList")));
 const MainCompanyDetail = Loadable(lazy(() => import("src/pages/main/companies/CompanyDetail")));
 
+// Users
+const AdminManageUsers = Loadable(lazy(() => import("src/pages/admin/users/UserList")));
+const AdminUserDetail = Loadable(lazy(() => import("src/pages/admin/users/UserDetail")));
+
 // Recruitment
 // for admins
 const CompanyManageRecruitments = Loadable(lazy(() => import("src/pages/company-admin/recruitments/RecruitmentList")));
@@ -50,6 +54,10 @@ export {
   AdminCompanyDetail,
   MainCompanies,
   MainCompanyDetail,
+
+  // Users
+  AdminManageUsers,
+  AdminUserDetail,
 
   // Recruitment
   CompanyManageRecruitments,

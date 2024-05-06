@@ -29,6 +29,8 @@ const ROUTES = {
   adminManageCompanies: "/admin/company",
   adminCreateCompany: "/admin/company/create",
   adminCompanyDetail: "/admin/company/:companyId",
+  adminManageUsers: "/admin/users",
+  adminUserDetail: "/admin/users/:userId",
 };
 
 export default ROUTES;
