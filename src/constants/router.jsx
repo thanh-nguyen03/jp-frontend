@@ -7,6 +7,8 @@ import {
   AdminCreateCompany,
   AdminDashboard,
   AdminManageCompany,
+  AdminManageUsers,
+  AdminUserDetail,
   CompanyAdminDashboard,
   CompanyManageRecruitments,
   CompanyRecruitmentApplicationDetail,
@@ -138,6 +140,19 @@ const adminRoutes = {
         {
           path: ROUTES.adminCompanyDetail,
           element: <AdminCompanyDetail />,
+        },
+      ],
+    },
+    {
+      path: ROUTES.adminManageUsers,
+      children: [
+        {
+          index: true,
+          element: <AdminManageUsers />,
+        },
+        {
+          path: ROUTES.adminUserDetail,
+          element: <AdminUserDetail />,
         },
       ],
     },

@@ -4,7 +4,6 @@ import {
   ButtonGroup,
   Heading,
   HStack,
-  Icon,
   Progress,
   Table,
   TableContainer,
@@ -16,15 +15,14 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { IoAdd } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Page from "src/components/Page";
-import Pagination from "src/components/Pagination";
 import ROUTES from "src/constants/routes";
-import { useGetAllCompaniesQuery } from "src/redux/api/companyApi";
+import { formatDate } from "src/helpers/date";
+import { useAdminGetUsersQuery } from "src/redux/api/userApi";
 
-const CompanyList = () => {
-  const { data, isLoading } = useGetAllCompaniesQuery();
+const UserList = () => {
+  const { data, isLoading } = useAdminGetUsersQuery();
   const toast = useToast();
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const CompanyList = () => {
     if (!data?.success) {
       toast({
         title: "Error",
-        description: data.message,
+        description: data?.message,
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -44,14 +42,8 @@ const CompanyList = () => {
     <Page>
       <HStack justifyContent="space-between">
         <Heading size="lg" mb={2}>
-          Company List
+          User List
         </Heading>
-
-        <Link to={ROUTES.adminCreateCompany}>
-          <Button colorScheme="green" leftIcon={<Icon as={IoAdd} />}>
-            Create company
-          </Button>
-        </Link>
       </HStack>
       {isLoading && (
         <Box my={6}>
@@ -66,21 +58,25 @@ const CompanyList = () => {
               <Thead>
                 <Tr>
                   <Th>No</Th>
-                  <Th>Code</Th>
                   <Th>Name</Th>
+                  <Th>Email</Th>
+                  <Th>Role</Th>
+                  <Th>Created At</Th>
                   <Th>Actions</Th>
                 </Tr>
               </Thead>
 
               <Tbody>
-                {data?.data.map((company, index) => (
-                  <Tr key={company.id}>
+                {data?.data.map((user, index) => (
+                  <Tr key={user.id}>
                     <Td>{index + 1}</Td>
-                    <Td>{company.code}</Td>
-                    <Td>{company.name}</Td>
+                    <Td>{`${user.firstName} ${user.lastName}`}</Td>
+                    <Td>{user.email}</Td>
+                    <Td>{user.role.replace("_", " ")}</Td>
+                    <Td>{formatDate(user.createdAt)}</Td>
                     <Td>
                       <ButtonGroup>
-                        <Link to={ROUTES.adminCompanyDetail.replace(":companyId", company.id)}>
+                        <Link to={ROUTES.adminUserDetail.replace(":userId", user.id)}>
                           <Button colorScheme="gray" size="md">
                             View
                           </Button>
@@ -92,12 +88,10 @@ const CompanyList = () => {
               </Tbody>
             </Table>
           </TableContainer>
-
-          <Pagination pageInfo={data?.pageInfo} />
         </>
       )}
     </Page>
   );
 };
 
-export default CompanyList;
+export default UserList;

@@ -1,6 +1,6 @@
 import { AiOutlineHome } from "react-icons/ai";
 import { CgOrganisation } from "react-icons/cg";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
 import { GrAnnounce } from "react-icons/gr";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
@@ -15,14 +15,14 @@ const mainSidebar = [
     icon: AiOutlineHome,
   },
   {
-    title: "Companies",
-    path: ROUTES.companies,
-    icon: CgOrganisation,
-  },
-  {
     title: "Recruitments",
     path: ROUTES.recruitments,
     icon: GrAnnounce,
+  },
+  {
+    title: "Companies",
+    path: ROUTES.companies,
+    icon: CgOrganisation,
   },
   {
     title: "My Company",
@@ -68,9 +68,14 @@ const adminSidebar = [
     icon: RiAdminFill,
   },
   {
-    title: "Companies",
+    title: "Manage Companies",
     path: ROUTES.adminManageCompanies,
     icon: GoOrganization,
+  },
+  {
+    title: "Manage Users",
+    path: ROUTES.adminManageUsers,
+    icon: FaUser,
   },
 ];
 

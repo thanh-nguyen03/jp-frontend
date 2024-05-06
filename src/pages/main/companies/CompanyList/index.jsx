@@ -15,7 +15,7 @@ const MainCompanyList = () => {
   };
 
   return (
-    <Page title="Recruitment List">
+    <Page title="Company List">
       <CompanySearchBar handleSearch={handleSearch} isSearching={isLoading || isFetching} />
       <Box my={4} bgColor="white" p={4} rounded="sm">
         {isLoading && <LoadingSpinner size="lg" />}
