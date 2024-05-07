@@ -53,7 +53,6 @@ const RecruitmentApplications = () => {
                   </Tr>
                 ))}
               </Tbody>
-              d
             </Table>
           </TableContainer>
         </>

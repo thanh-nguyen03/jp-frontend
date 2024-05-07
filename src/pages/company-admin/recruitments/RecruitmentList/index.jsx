@@ -9,6 +9,7 @@ import {
   Table,
   TableContainer,
   Tbody,
+  Td,
   Th,
   Thead,
   Tr,
@@ -77,11 +78,11 @@ const RecruitmentList = () => {
               <Tbody>
                 {data?.data.map((recruitment, index) => (
                   <Tr key={recruitment.id}>
-                    <Th>{index + 1}</Th>
-                    <Th>{recruitment.title}</Th>
-                    <Th>{jobType[recruitment.jobType]}</Th>
-                    <Th>{formatDateTime(recruitment.deadline)}</Th>
-                    <Th>
+                    <Td>{index + 1}</Td>
+                    <Td>{recruitment.title}</Td>
+                    <Td>{jobType[recruitment.jobType]}</Td>
+                    <Td>{formatDateTime(recruitment.deadline)}</Td>
+                    <Td>
                       <ButtonGroup>
                         <Link to={ROUTES.companyRecruitmentDetail.replace(":recruitmentId", recruitment.id)}>
                           <Button colorScheme="gray" size="md">
@@ -94,7 +95,7 @@ const RecruitmentList = () => {
                           </Button>
                         </Link>
                       </ButtonGroup>
-                    </Th>
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>

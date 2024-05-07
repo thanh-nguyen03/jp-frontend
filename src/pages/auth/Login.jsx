@@ -89,8 +89,6 @@ const Login = () => {
     }
   }, [error, toast]);
 
-  console.log(errors);
-
   return (
     <Flex pl={20} flex={1} align="center" justifyContent="center">
       <Stack spacing={4}>

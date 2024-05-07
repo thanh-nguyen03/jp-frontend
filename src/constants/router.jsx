@@ -10,6 +10,8 @@ import {
   AdminManageUsers,
   AdminUserDetail,
   CompanyAdminDashboard,
+  CompanyCreateHR,
+  CompanyManageHRs,
   CompanyManageRecruitments,
   CompanyRecruitmentApplicationDetail,
   CompanyRecruitmentApplications,
@@ -112,6 +114,19 @@ const companyAdminRoutes = {
               ],
             },
           ],
+        },
+      ],
+    },
+    {
+      path: ROUTES.companyManageHRs,
+      children: [
+        {
+          index: true,
+          element: <CompanyManageHRs />,
+        },
+        {
+          path: ROUTES.companyCreateHR,
+          element: <CompanyCreateHR />,
         },
       ],
     },

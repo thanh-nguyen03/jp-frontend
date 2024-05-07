@@ -54,6 +54,12 @@ const companyAccountSidebar = [
     path: ROUTES.companyManageRecruitments,
     icon: GrAnnounce,
   },
+  {
+    title: "Manage HRs",
+    path: ROUTES.companyManageHRs,
+    icon: FaUser,
+    roles: [ROLES.COMPANY_ADMIN],
+  },
 ];
 
 const adminSidebar = [
