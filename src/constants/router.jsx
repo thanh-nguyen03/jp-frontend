@@ -9,6 +9,7 @@ import {
   AdminManageCompany,
   AdminManageUsers,
   AdminUserDetail,
+  ChangePassword,
   CompanyAdminDashboard,
   CompanyCreateHR,
   CompanyManageHRs,
@@ -68,6 +69,15 @@ const mainRoutes = {
         {
           path: ROUTES.recruitmentDetail,
           element: <MainRecruitmentDetail />,
+        },
+      ],
+    },
+    {
+      path: ROUTES.settings,
+      children: [
+        {
+          path: ROUTES.changePassword,
+          element: <ChangePassword />,
         },
       ],
     },

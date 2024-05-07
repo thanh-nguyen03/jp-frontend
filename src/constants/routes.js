@@ -32,6 +32,10 @@ const ROUTES = {
   adminCompanyDetail: "/admin/company/:companyId",
   adminManageUsers: "/admin/users",
   adminUserDetail: "/admin/users/:userId",
+
+  // Settings
+  settings: "/settings",
+  changePassword: "/settings/change-password",
 };
 
 export default ROUTES;
