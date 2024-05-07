@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Flex,
-  Icon,
   Drawer,
   DrawerContent,
   IconButton,
@@ -15,8 +14,8 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Text,
 } from "@chakra-ui/react";
-import { FaBell } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import ROUTES from "src/constants/routes";
@@ -27,7 +26,7 @@ import { logout } from "src/redux/state/reducers/authReducer";
 
 const MainLayout = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, displayName } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -80,7 +79,9 @@ const MainLayout = () => {
               />
 
               <Flex align="center">
-                <Icon color="gray.500" as={FaBell} cursor="pointer" />
+                <Text fontSize="md" mr="2">
+                  Welcome, {displayName} 🎉
+                </Text>
                 <Menu>
                   <MenuButton>
                     <Avatar
@@ -93,7 +94,7 @@ const MainLayout = () => {
                   </MenuButton>
 
                   <MenuList>
-                    <MenuItem>Settings</MenuItem>
+                    <MenuItem onClick={() => navigate(ROUTES.changePassword)}>Settings</MenuItem>
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
                 </Menu>

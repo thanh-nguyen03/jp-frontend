@@ -14,8 +14,15 @@ const userApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    changePassword: build.mutation({
+      query: (data) => ({
+        url: "/users/change-password",
+        method: "PUT",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useAdminGetUsersQuery, useAdminGetUserDetailQuery } = userApi;
+export const { useAdminGetUsersQuery, useAdminGetUserDetailQuery, useChangePasswordMutation } = userApi;
 export default userApi;
