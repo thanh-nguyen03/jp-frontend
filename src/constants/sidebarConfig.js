@@ -18,11 +18,13 @@ const mainSidebar = [
     title: "Recruitments",
     path: ROUTES.recruitments,
     icon: GrAnnounce,
+    roles: [ROLES.USER, ROLES.COMPANY_HR, ROLES.COMPANY_ADMIN, ROLES.ADMIN],
   },
   {
     title: "Companies",
     path: ROUTES.companies,
     icon: CgOrganisation,
+    roles: [ROLES.USER, ROLES.COMPANY_HR, ROLES.COMPANY_ADMIN, ROLES.ADMIN],
   },
   {
     title: "My Company",

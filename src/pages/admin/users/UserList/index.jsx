@@ -22,7 +22,9 @@ import { formatDate } from "src/helpers/date";
 import { useAdminGetUsersQuery } from "src/redux/api/userApi";
 
 const UserList = () => {
-  const { data, isLoading } = useAdminGetUsersQuery();
+  const { data, isLoading } = useAdminGetUsersQuery({
+    sort: "id:asc",
+  });
   const toast = useToast();
 
   useEffect(() => {

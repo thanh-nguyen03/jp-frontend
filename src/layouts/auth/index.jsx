@@ -1,5 +1,6 @@
 import { Stack, Image, Flex } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
+import imgUrl from "src/assets/Jobs-in-Australia.png";
 
 const AuthLayout = () => {
   return (
@@ -7,11 +8,7 @@ const AuthLayout = () => {
       <Outlet />
 
       <Flex flex={1} pr={20} pt={18} alignItems="center" justifyContent="center">
-        <Image
-          alt="Cover image"
-          objectFit="cover"
-          src="https://www.careerguide.com/career/wp-content/uploads/2023/11/Jobs-in-Australia.png"
-        />
+        <Image alt="Cover image" objectFit="cover" src={imgUrl} />
       </Flex>
     </Stack>
   );

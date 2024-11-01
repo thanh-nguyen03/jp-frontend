@@ -1,7 +1,7 @@
 import { Button, Flex, Grid, GridItem, Icon, Stack, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { TbSend } from "react-icons/tb";
@@ -42,6 +42,8 @@ const ApplicationForm = ({ onSubmit, isSubmitting, application }) => {
 
   const [totalPages, setTotalPages] = useState();
   const [pageNumber, setPageNumber] = useState(0);
+
+  const watchedCV = useMemo(() => watch("uploadCV"), [watch]);
 
   const handleButtonClick = () => {
     const message = watch("message");

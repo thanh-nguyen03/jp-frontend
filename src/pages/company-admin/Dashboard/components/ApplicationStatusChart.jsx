@@ -10,7 +10,7 @@ const ApplicationStatusChart = ({ chartData }) => {
     datasets: [
       {
         label: "Amount",
-        data: [chartData.pending, chartData.accepted, chartData.rejected],
+        data: [chartData.accepted, chartData.pending, chartData.rejected],
         backgroundColor: ["rgba(75, 200, 192, 0.4)", "rgba(255, 159, 64, 0.4)", "rgba(255, 99, 132, 0.4)"],
         borderColor: ["rgba(75, 200, 192, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 99, 132, 1)"],
         borderWidth: 1,

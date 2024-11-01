@@ -46,6 +46,16 @@ const App = () => {
         status: "warning",
       });
     }
+
+    // all routes need to be authenticated except home
+    if (!isAuthenticated && !pathname.includes(ROUTES.auth) && !pathname.includes(ROUTES.dashboard)) {
+      navigate(ROUTES.login);
+      toast({
+        title: "Unauthorized",
+        description: "You need to login to access this page.",
+        status: "error",
+      });
+    }
   }, [hasAnyRole, isAuthenticated, isDecoded, navigate, pathname, toast]);
 
   return <Box>{useRoutes(router)}</Box>;

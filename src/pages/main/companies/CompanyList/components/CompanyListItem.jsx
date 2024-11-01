@@ -42,7 +42,7 @@ const CompanyListItem = ({ company }) => {
             variant="solid"
             size="sm"
             colorScheme="green"
-            to={ROUTES.companyDetail.replace(":recruitmentId", company.id)}
+            to={ROUTES.companyDetail.replace(":companyId", company.id)}
           >
             View Company
           </Button>

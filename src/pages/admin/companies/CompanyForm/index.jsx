@@ -39,7 +39,7 @@ const CompanyForm = ({ company, onSubmit, isSubmitting }) => {
               errors={errors}
               register={register}
               isMultiline
-              rows={6}
+              rows={15}
             />
           </GridItem>
 

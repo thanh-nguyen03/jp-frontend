@@ -10,7 +10,7 @@ import { formatDate, formatDateTime } from "src/helpers/date";
 
 const RecruitmentDetailTopCard = ({ recruitment, onApply, userApplication, onViewApplication }) => {
   const statusColor = useMemo(() => {
-    switch (userApplication.status) {
+    switch (userApplication?.status) {
       case "PENDING":
         return "orange";
       case "APPROVED":

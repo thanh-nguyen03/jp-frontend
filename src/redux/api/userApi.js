@@ -1,10 +1,11 @@
+import convertObjectToQueryParams from "src/helpers/convertObjectToQueryParams";
 import baseApi from "src/redux/api/baseApi";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     adminGetUsers: build.query({
-      query: () => ({
-        url: "/admin/users",
+      query: (query) => ({
+        url: `/admin/users?${convertObjectToQueryParams(query)}`,
         method: "GET",
       }),
     }),

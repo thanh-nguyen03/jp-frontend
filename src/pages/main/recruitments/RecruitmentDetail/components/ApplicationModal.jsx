@@ -64,7 +64,7 @@ const ApplicationModal = ({ isOpen, onClose, application }) => {
           <ApplicationForm
             application={application || null}
             onSubmit={handleSubmit}
-            isSubmitting={isUploading && isLoading}
+            isSubmitting={isUploading || isLoading}
           />
         </ModalBody>
       </ModalContent>
