@@ -39,6 +39,7 @@ const CompanyRecruitmentApplicationDetail = Loadable(
 // for users
 const MainRecruitments = Loadable(lazy(() => import("src/pages/main/recruitments/RecruitmentList")));
 const MainRecruitmentDetail = Loadable(lazy(() => import("src/pages/main/recruitments/RecruitmentDetail")));
+const MainSuggestJobList = Loadable(lazy(() => import("src/pages/main/suggests/SuggestJobList")));
 
 // Settings
 const ChangePassword = Loadable(lazy(() => import("src/pages/main/settings/ChangePassword")));
@@ -59,6 +60,9 @@ export {
   AdminCompanyDetail,
   MainCompanies,
   MainCompanyDetail,
+
+  // Suggestions
+  MainSuggestJobList,
 
   // Users
   AdminManageUsers,

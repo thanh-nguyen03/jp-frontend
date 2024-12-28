@@ -5,6 +5,7 @@ import { GoOrganization } from "react-icons/go";
 import { GrAnnounce } from "react-icons/gr";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RiAdminFill } from "react-icons/ri";
+import { FaRobot } from "react-icons/fa";
 import ROLES from "src/constants/roles";
 import ROUTES from "src/constants/routes";
 
@@ -25,6 +26,12 @@ const mainSidebar = [
     path: ROUTES.companies,
     icon: CgOrganisation,
     roles: [ROLES.USER, ROLES.COMPANY_HR, ROLES.COMPANY_ADMIN, ROLES.ADMIN],
+  },
+  {
+    title: "Suggest Jobs",
+    path: ROUTES.suggestJobs,
+    icon: FaRobot,
+    roles: [ROLES.USER],
   },
   {
     title: "My Company",
