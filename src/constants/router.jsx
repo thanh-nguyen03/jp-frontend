@@ -24,10 +24,11 @@ import {
   MainRecruitmentDetail,
   MainRecruitments,
   Register,
+  MainCompanies,
+  MainSuggestJobList,
 } from "src/constants/imports";
 import ROUTES from "src/constants/routes";
 import MainLayout from "src/layouts/main";
-import MainCompanyList from "src/pages/main/companies/CompanyList";
 
 const authRoutes = {
   path: ROUTES.auth,
@@ -51,7 +52,7 @@ const mainRoutes = {
       children: [
         {
           index: true,
-          element: <MainCompanyList />,
+          element: <MainCompanies />,
         },
         {
           path: ROUTES.companyDetail,
@@ -69,6 +70,15 @@ const mainRoutes = {
         {
           path: ROUTES.recruitmentDetail,
           element: <MainRecruitmentDetail />,
+        },
+      ],
+    },
+    {
+      path: ROUTES.suggestJobs,
+      children: [
+        {
+          index: true,
+          element: <MainSuggestJobList />,
         },
       ],
     },
