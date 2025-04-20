@@ -10,6 +10,7 @@ import useAuth from "src/hooks/useAuth";
 import { setCredential } from "src/redux/state/reducers/authReducer";
 
 const App = () => {
+  console.log("API URL", import.meta.env.VITE_APP_API_URL);
   const [isDecoded, setIsDecoded] = useState(false);
   const { isAuthenticated, hasAnyRole } = useAuth();
   const navigate = useNavigate();

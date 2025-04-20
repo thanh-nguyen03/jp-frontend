@@ -18,4 +18,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    cors: {
+      // the origin you will be accessing via browser
+      origin: "https://job.thanhnd.site",
+    },
+    host: true,
+    allowedHosts: true,
+  },
 });

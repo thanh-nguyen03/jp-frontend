@@ -6,33 +6,18 @@
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
-ARG NODE_VERSION=22.11.0
+ARG NODE_VERSION=20.17.0
 
-FROM node:${NODE_VERSION}-alpine
-
-# Use production node environment by default.
-ENV NODE_ENV production
-
-
-WORKDIR /usr/src/app
-
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.yarn to speed up subsequent builds.
-# Leverage a bind mounts to package.json and yarn.lock to avoid having to copy them into
-# into this layer.
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=yarn.lock,target=yarn.lock \
-    --mount=type=cache,target=/root/.yarn \
-    yarn install --production --frozen-lockfile
-
-# Run the application as a non-root user.
-USER node
-
-# Copy the rest of the source files into the image.
+FROM node:${NODE_VERSION}-alpine AS builder
+WORKDIR /app
+COPY package*.json .
+RUN npm install
 COPY . .
+RUN npm run build
 
-# Expose the port that the application listens on.
-EXPOSE 5173
-
-# Run the application.
-CMD yarn dev
+# Stage 2: Serve the built frontend with Nginx
+FROM nginx:stable-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
