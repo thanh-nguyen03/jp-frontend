@@ -3,7 +3,8 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { jwtDecode } from "jwt-decode";
 
 const baseApiSlice = fetchBaseQuery({
-  baseUrl: "http://localhost:8000/suggest-service",
+  baseUrl: "https://job.thanhnd.site/ai",
+  // baseUrl: "http://localhost/ai",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("accessToken");
     if (token) {

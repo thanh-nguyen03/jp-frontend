@@ -5,6 +5,7 @@ import { logout, setCredential, storeTokens } from "src/redux/state/reducers/aut
 
 const baseApiSlice = fetchBaseQuery({
   baseUrl: "https://job.thanhnd.site/api",
+  // baseUrl: "http://localhost/api",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("accessToken");
     if (token) {
